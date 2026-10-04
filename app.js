@@ -488,6 +488,7 @@ const eur0 = v => v.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR'
    7. OUTILS D'INTERFACE
    ===================================================================== */
 const ICON = {
+  fheart: '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.6 7.8 3.7 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.4 0 5.5 3.3 4.3 6.6-1.7 4.8-9.2 9.4-9.2 9.4z"/></svg>',
   gear: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>',
   idea: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3z"/></svg>',
   info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></svg>',
@@ -660,7 +661,7 @@ function vOrbite() {
     </svg>
   </div>
   ${yesterdayCard()}${atStake()}
-${tjCard()}${tjFeedback()}
+${tjCard()}
   <section style="margin-top:18px">
     <h2>Aujourd'hui</h2>
     <div class="today-list">
@@ -678,7 +679,8 @@ ${tjCard()}${tjFeedback()}
       ${(() => { const h = hrt(), x = HEART.find(y => y.k === h.cur) || HEART[0], l = hLevel(x.k), done = !!hc(x.k).days[todayISO()]; return `<button class="today-item" data-goto="coeur">${miniOrb(l / 3, 'foi', true)}<span><b>Cœur · ${x.n}</b><span class="s">${l === 0 ? 'Commence par la leçon' : l === 3 ? 'Ancrée : continue de la pratiquer' : done ? (x.k === 'dua' ? 'Tu Lui as parlé aujourd\'hui' : 'Pratiqué aujourd\'hui') : x.k === 'dua' ? 'Une phrase pour Allah aujourd\'hui' : `Pratique du jour · ${hDays(x.k)} jour${hDays(x.k) > 1 ? 's' : ''} sur 21`}</span></span>${ICON.chev}</button>`; })()}
       <button class="today-item" data-goto="arabe">${miniOrb(wordsKnown() / WORDS.length, 'arabe', true)}<span><b>Réviser 5 mots</b><span class="s">${wordsKnown()} mots maîtrisés sur ${WORDS.length}</span></span>${ICON.chev}</button>
     </div>
-  </section>`;
+  </section>
+  <div class="glasswrap tjbottom">${tjFeedback()}</div>`;
 }
 /* Animation du système + rotation au doigt avec inertie */
 const orb = { raf: 0, t0: 0, spin: 0, vel: 0, drag: null, last: 0 };
@@ -3590,7 +3592,7 @@ function fxNext() {
   if (i % 15 === 0) return fxPause();
   if (i % 4 === 0) { const r = Math.random(); if (r < .25) { const w = Math.floor(Math.random() * WORDS.length); return { id: 'ar' + w + '-' + uid(), t: 'ar', w }; } return fxPick(r < .65 ? 'quiz' : 'vf'); }
   if (i % 11 === 0) return fxMe();
-  if (!FXS.order.length) FXS.order = ['foi', 'foi', 'biz', 'vente', 'savoir', 'psy', 'sport', 'voyage', 'parfum'].sort(() => Math.random() - .5);
+  if (!FXS.order.length) { const base = ['foi', 'foi', 'biz', 'vente', 'savoir', 'psy', 'sport', 'voyage', 'parfum'], lk = {}; (S.flux.saved || []).forEach(id => { const c = FX_ALL[id]; if (!c) return; const t = ['coran', 'hadith'].includes(c.t) ? 'foi' : ['sci', 'cult'].includes(c.t) ? 'savoir' : c.t; if (base.includes(t)) lk[t] = (lk[t] || 0) + 1; }); const top = Object.entries(lk).sort((x, y) => y[1] - x[1])[0]; FXS.order = base.concat(top && top[1] >= 2 ? [top[0]] : []).sort(() => Math.random() - .5); }
   const p = FXS.order.shift();
   if (p === 'foi') return fxPick(foiType());
   if (p === 'savoir') return fxPick(Math.random() < .5 ? 'sci' : 'cult');
@@ -3646,7 +3648,7 @@ function fxCard(c) {
       <p class="ffr">${fxWords(c.fr, 8)}</p><div class="fdo"><small>Ce qu'on sait aujourd'hui</small>${esc(c.sci)}</div>
       <p class="fnote">Le Coran est un livre de guidance : ces rapprochements sont des pistes de réflexion, pas des preuves.</p>`;
   } else if (c.t === 'biz') {
-    body = `<p class="fk">Business · ${esc(c.book)}${c.m ? ` · mois ${c.m}` : ''}</p><h2 class="ft">${fxWords(c.title)}</h2><p class="fb">${esc(c.text)}</p>
+    body = `<p class="fk">Business · ${esc(c.book)}</p><h2 class="ft">${fxWords(c.title)}</h2><p class="fb">${esc(c.text)}</p>
       <div class="fdo"><small>À faire</small>${esc(c.act)}</div>`;
   } else if (c.t === 'sci' || c.t === 'cult') {
     body = `<p class="fk">${conf.lbl}</p><h2 class="ft big">${fxWords(c.title)}</h2><p class="fb">${esc(c.text)}</p>`;
@@ -3671,7 +3673,7 @@ function fxCard(c) {
   }
   return `<article class="fc fc-${c.t}" data-fid="${c.id}" style="--bg1:${conf.bg[0]};--bg2:${conf.bg[1]};--ac:${conf.ac}">
     ${fxFloat(c)}<div class="fcin">${body}</div>
-    ${savable ? `<div class="frail"><button data-fsave aria-pressed="${saved}" aria-label="Garder">${ICON.fstar}<span>${saved ? 'Gardé' : 'Garder'}</span></button><button data-fcopy aria-label="Copier">${ICON.fcopy}<span>Copier</span></button></div>` : ''}
+    ${savable ? `<div class="frail"><button data-fsave aria-pressed="${saved}" aria-label="J\'aime">${ICON.fheart}<span>${saved ? 'Aimé' : 'J\'aime'}</span></button><button data-fcopy aria-label="Copier">${ICON.fcopy}<span>Copier</span></button></div>` : ''}
   </article>`;
 }
 function vFlux() {
@@ -3680,8 +3682,8 @@ function vFlux() {
   const first = !S.flux.used;
   return `<div class="feed" id="feed">${FXS.cards.map(fxCard).join('')}</div>
     <div class="fhead"><div><p class="fh-t">Flux</p><div class="fprog" id="fprog">${Array.from({ length: 15 }, () => '<i></i>').join('')}</div></div>
-      <div class="row" style="gap:2px"><button class="icon-btn" data-fsaved aria-label="Mes cartes gardées">${ICON.fstar}</button><button class="icon-btn" data-goto="orbite" aria-label="Fermer">${ICON.fclose}</button></div></div>
-    ${first ? '<div class="fhint" id="fhint"><span>Glisse vers le haut</span><small>Touche deux fois une carte pour la garder</small></div>' : ''}`;
+      <div class="row" style="gap:2px"><button class="icon-btn" data-fsaved aria-label="Mes cartes aimées">${ICON.fheart}</button><button class="icon-btn" data-goto="orbite" aria-label="Fermer">${ICON.fclose}</button></div></div>
+    ${first ? '<div class="fhint" id="fhint"><span>Glisse vers le haut</span><small>Touche deux fois une carte pour l\'aimer</small></div>' : ''}`;
 }
 function fxCardOf(el) { return FXS.cards.find(c => c.id === el.dataset.fid); }
 function bindFlux() {
@@ -3714,8 +3716,8 @@ function fxRead(id) {
 function fxSave(el) {
   const art = el.closest('.fc'), id = art.dataset.fid; if (!FX_ALL[id]) return;
   const i = S.flux.saved.indexOf(id), b = $('[data-fsave]', art);
-  if (i >= 0) { S.flux.saved.splice(i, 1); if (b) { b.setAttribute('aria-pressed', 'false'); $('span', b).textContent = 'Garder'; } toast('Retiré de tes cartes'); }
-  else { S.flux.saved.push(id); if (b) { b.setAttribute('aria-pressed', 'true'); $('span', b).textContent = 'Gardé'; } burst(14, '✦', false); chime(false); haptic(); }
+  if (i >= 0) { S.flux.saved.splice(i, 1); if (b) { b.setAttribute('aria-pressed', 'false'); $('span', b).textContent = 'J\'aime'; } toast('Retiré de tes cartes aimées'); }
+  else { S.flux.saved.push(id); if (b) { b.setAttribute('aria-pressed', 'true'); $('span', b).textContent = 'Aimé'; b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop'); } burst(14, '♥', false); chime(false); haptic(); }
   save();
 }
 function fxText(c) {
@@ -3730,7 +3732,7 @@ function fxText(c) {
 }
 function openSaved() {
   const list = S.flux.saved.map(id => FX_ALL[id]).filter(Boolean).reverse();
-  $('#ideasBody').innerHTML = `<div class="grab"></div><div class="sheet-top"><span style="width:60px"></span><h2 id="ideasTitle">Gardées</h2><button class="link-btn" data-close style="text-align:right">OK</button></div>
+  $('#ideasBody').innerHTML = `<div class="grab"></div><div class="sheet-top"><span style="width:60px"></span><h2 id="ideasTitle">Aimées</h2><button class="link-btn" data-close style="text-align:right">OK</button></div>
     ${list.length ? list.map(c => `<div class="idea"><p><span class="eyebrow" style="display:block;margin-bottom:4px">${FXC[c.t].lbl}${c.ref ? ' · ' + c.ref : c.src ? ' · ' + esc(c.src) : c.book ? ' · ' + esc(c.book) : c.by ? ' · ' + esc(c.by) : ''}</span>${esc(c.title || c.fr || c.q)}${c.text ? `<time>${esc(c.text)}</time>` : c.ex && c.t !== 'coran' && c.t !== 'hadith' ? '' : ''}</p><button class="icon-btn" data-funsave="${c.id}" aria-label="Retirer"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>`).join('') : '<p class="empty">Touche deux fois une carte, ou ✦, pour la garder ici.</p>'}`;
   const d = $('#ideasSheet'); if (!d.open) d.showModal();
 }
@@ -3795,7 +3797,7 @@ function openSettings() {
     <p class="gt">Parcours</p>
     <div class="group"><div class="cell"><label for="sStart">Date de début</label><input type="date" id="sStart" value="${S.start}"></div></div>
     <p class="hint">Sert à calculer le mois en cours. Tes cases cochées sont conservées si tu la changes.</p>
-    <p class="hint" style="margin-top:30px;text-align:center">Mosa · v1.7 · fonctionne hors ligne</p>`;
+    <p class="hint" style="margin-top:30px;text-align:center">Mosa · v1.8 · fonctionne hors ligne</p>`;
   if (!$('#settingsSheet').open) $('#settingsSheet').showModal();
   if (navigator.storage && navigator.storage.persisted) navigator.storage.persisted().then(p => { const el = $('#persistInfo'); if (el && p) el.textContent = 'Stockage protégé contre le nettoyage automatique.'; }).catch(() => {});
 }
@@ -4968,7 +4970,7 @@ function ensureThai() {
       <g class="thmk b" transform="translate(52 760) scale(.85)"><ellipse cx="0" cy="0" rx="7" ry="8.5" fill="#4A3828"/><circle cx="0" cy="-10" r="5.2" fill="#4A3828"/><ellipse cx="0" cy="-9" rx="3" ry="2.6" fill="#8C6E54"/><path class="thtail" d="M-5 4q-12 4 -10 18" stroke="#4A3828" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>
     </svg>`;
     document.body.prepend(g);
-    window.addEventListener('resize', () => paintThai(true));
+    window.addEventListener('resize', () => paintThai(true)); window.addEventListener('orientationchange', () => setTimeout(() => paintThai(true), 300)); if (window.visualViewport) visualViewport.addEventListener('resize', () => paintThai(false)); setTimeout(() => paintThai(true), 600);
   }
   paintThai(false);
 }
@@ -5087,7 +5089,7 @@ function vIle() {
     <ellipse data-sun cx="4" cy="0" rx="48" ry="40" fill="transparent" role="button" tabindex="0" aria-label="Ouvrir le Flux" style="cursor:pointer"/>
     ${vil}
   </svg></div>
-  <div class="glasswrap">${typeof tjCard === 'function' ? tjCard() + tjFeedback() : ''}</div>
+  <div class="glasswrap">${typeof tjCard === 'function' ? tjCard() : ''}</div>
   <section class="glass"><h2>Aujourd'hui</h2><div class="today-list">
     <button class="today-item" data-goto="habitudes">${miniOrb(fn ? fd / fn : 0, 'foi', true)}<span><b>${fd === fn ? 'Foi : journée complète' : `${fd} habitude${fd > 1 ? 's' : ''} sur ${fn}`}</b><span class="s">${pn && !(S.faith.log[pn.k] || {})[pn.id] ? `${PNAMES[pn.id]} en cours · reste ${leftTxt(pn.end - new Date())}` : nx ? `Prochaine : ${PNAMES[nx.id]} à ${hm(nx.start)}` : 'Toutes les prières sont passées'}</span></span>${ICON.chev}</button>
     <button class="today-item" data-goto="business">${miniOrb(calls / g, 'business')}<span><b>${calls >= g ? `Objectif d'appels atteint · ${calls}` : `${calls} appel${calls > 1 ? 's' : ''} sur ${g}`}</b><span class="s">${dueRelances().length ? `${dueRelances().length} relance${dueRelances().length > 1 ? 's' : ''} à faire aujourd'hui` : rdvToday().length ? `${rdvToday().length} rendez-vous aujourd'hui` : 'Lance une session d\'appels'}</span></span>${ICON.chev}</button>
@@ -5095,7 +5097,8 @@ function vIle() {
     ${pj ? `<button class="today-item" data-goto="projets">${miniOrb(0, 'business')}<span><b>Prochaine étape</b><span class="s">${esc(pj.t)}</span></span>${ICON.chev}</button>` : ''}
     <button class="today-item" data-goto="apprendre">${miniOrb(ap ? 1 : 0, 'arabe', true)}<span><b>${ap ? 'Apprentissage fait' : '10 minutes pour apprendre à vendre'}</b><span class="s">L'art de vendre · Business halal</span></span>${ICON.chev}</button>
     <button class="today-item" data-goto="flux">${miniOrb(Math.min(1, (S.flux.day.d === k ? S.flux.day.n : 0) / 5), 'flux')}<span><b>Flux · 5 cartes pour ton esprit</b><span class="s">Business, vente, foi, mental</span></span>${ICON.chev}</button>
-  </div></section>`;
+  </div></section>
+  <div class="glasswrap tjbottom">${tjFeedback()}</div>`;
 }
 function startIle() {
   const st = $('#stage'); if (!st) return;
