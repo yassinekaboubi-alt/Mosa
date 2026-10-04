@@ -1151,6 +1151,58 @@ input,textarea,select{caret-color:var(--gold)}
 .fx i{width:8px;height:8px;left:-4px;top:-4px;border-radius:0;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);background:linear-gradient(135deg,#FFF8E1 0%,#F3D9A4 35%,#E8C27A 60%,#A9782C 100%)}
 .fx i:nth-child(3n){width:10px;height:10px;left:-5px;top:-5px;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);background:#FFF4D6}
 .fx i:nth-child(4n){width:6px;height:6px;left:-3px;top:-3px;border-radius:50%;clip-path:none;background:radial-gradient(circle,#FFFFFF,#E8C27A 60%,rgba(232,194,122,0) 75%)}
+
+/* ---------- Mosa · Code moto ---------- */
+.cbar{height:6px;border-radius:3px;background:var(--raise);overflow:hidden;margin-top:14px}.cbar i{display:block;height:100%;background:linear-gradient(90deg,#E8C27A,#C48F3A);border-radius:3px}
+.cbar.sm{display:block;height:3px;margin-top:6px;max-width:160px}
+.cq{margin-top:16px;padding:18px 16px;border-radius:var(--r);background:color-mix(in srgb,var(--surface) 80%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--gold) 24%,transparent)}
+.copt{display:flex;align-items:center;gap:12px;width:100%;margin-top:8px;padding:12px 14px;border-radius:14px;background:var(--raise);text-align:left;font-weight:550;min-height:52px;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--gold) 14%,transparent)}
+.copt b{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:color-mix(in srgb,var(--gold) 18%,transparent);color:var(--gold);font-size:.8125rem}
+.copt.ok{box-shadow:inset 0 0 0 2px var(--mint);background:color-mix(in srgb,var(--mint) 14%,var(--raise))}.copt.ok b{background:var(--mint);color:#06231C}
+.copt.ko{box-shadow:inset 0 0 0 2px var(--danger);background:color-mix(in srgb,var(--danger) 12%,var(--raise))}.copt.ko b{background:var(--danger);color:#fff}
+.copt:disabled{opacity:1}
+.cexp{margin:14px 0 0;padding:12px 14px;border-radius:14px;background:var(--gold-soft);line-height:1.5}
+.cth .lbl{display:flex;flex-direction:column}
+/* ---------- Mosa · décor thaïlandais et navigation ---------- */
+#thai{position:fixed;inset:0;z-index:0;pointer-events:none;display:none}
+body.ile-on #thai{display:block}
+#thai canvas,#thai .thfx{position:absolute;inset:0;width:100%;height:100%}
+body.ile-soft #thai::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 40%,transparent) 0%,color-mix(in srgb,var(--bg) 80%,transparent) 26%,color-mix(in srgb,var(--bg) 87%,transparent) 100%)}
+:root[data-mode="light"] body.ile-soft #thai::after{background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 55%,transparent) 0%,color-mix(in srgb,var(--bg) 90%,transparent) 24%,color-mix(in srgb,var(--bg) 94%,transparent) 100%)}
+.ilebg{display:none!important}
+.thboat.far{animation:thfar 120s linear infinite}@keyframes thfar{0%{transform:translate(-60px,224px)}100%{transform:translate(440px,226px)}}
+.thboat.near{animation:thnear 70s linear infinite;animation-delay:-28s}@keyframes thnear{0%{transform:translate(430px,690px)}100%{transform:translate(-140px,700px)}}
+.thbirds{animation:thbirds 44s linear infinite}@keyframes thbirds{0%{transform:translate(-40px,120px)}100%{transform:translate(440px,90px)}}
+.thg{opacity:0;animation:thg 3.4s ease-in-out infinite}@keyframes thg{40%{opacity:.9}80%{opacity:0}}
+.thtail{transform-box:fill-box;transform-origin:0 0;animation:thtail 3s ease-in-out infinite alternate}@keyframes thtail{to{transform:rotate(14deg)}}
+.thmk.b .thtail{animation-delay:-1.5s}
+body.ile-on .core,body.ile-on .wheel,.core,.wheel{display:none!important}
+.dock{position:fixed;left:50%;bottom:calc(10px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:40;display:flex;gap:2px;padding:6px;border-radius:24px;background:color-mix(in srgb,var(--surface) 62%,transparent);-webkit-backdrop-filter:blur(22px) saturate(160%);backdrop-filter:blur(22px) saturate(160%);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--gold) 32%,transparent),0 18px 40px -18px rgba(0,0,0,.7)}
+.dock button{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:60px;min-height:52px;padding:6px 4px;border-radius:18px;color:var(--ink-2);font-size:.6875rem;font-weight:600}
+.dock button svg{width:22px;height:22px;color:currentColor}
+.dock button.on{color:#1E1406;background:linear-gradient(135deg,#F8E9C4,#E8C27A 50%,#C48F3A);box-shadow:0 6px 16px -8px rgba(232,194,122,.8)}
+:root[data-mode="light"] .dock button.on{color:#fff;background:linear-gradient(135deg,#EACB8E,#C8973A 50%,#97691C)}
+.more{position:fixed;left:16px;right:16px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:39;padding:16px;border-radius:24px;background:color-mix(in srgb,var(--surface) 72%,transparent);-webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--gold) 30%,transparent),0 24px 50px -20px rgba(0,0,0,.8);opacity:0;transform:translateY(16px) scale(.98);pointer-events:none;transition:opacity .25s var(--ease),transform .3s var(--ease)}
+.more.open{opacity:1;transform:none;pointer-events:auto}
+.moregrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.moregrid button{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 6px;border-radius:18px;background:color-mix(in srgb,var(--raise) 70%,transparent);font-size:.8125rem;font-weight:600;color:var(--ink)}
+.moregrid i{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#F8E9C4,#E8C27A 50%,#C48F3A);color:#1E1406}
+.moregrid svg{width:22px;height:22px}
+.moregrid button.on{box-shadow:inset 0 0 0 1.5px var(--gold)}
+#app{padding-bottom:110px}
+@media (prefers-reduced-motion: reduce){.thboat,.thbirds,.thg,.thtail{animation:none}.thboat.far{transform:translate(80px,224px)}.thboat.near{transform:translate(220px,695px)}.thbirds{transform:translate(120px,100px)}}
+
+/* Ouverture réaliste : la baie apparaît depuis le noir, puis MOSA en lettres d'or */
+.intro{background:transparent!important}
+.intro::before{content:"";position:absolute;inset:0;background:#05090B;animation:mfade 1.6s cubic-bezier(.4,0,.2,1) .2s forwards}
+@keyframes mfade{to{opacity:0}}
+.intro::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 26%,rgba(255,214,150,.35),rgba(0,0,0,0) 55%),linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(3,12,14,.55));pointer-events:none}
+.intro .intro-wrap{position:relative;z-index:1}
+.intro .intro-wrap>svg{display:none}
+body:has(#intro) #app,body:has(#intro) .dock,body:has(#intro) #thai .thfx{opacity:0}
+#app,.dock{transition:opacity .6s var(--ease)}
+.intro .it b{font-size:3.2rem;letter-spacing:.32em;background:linear-gradient(100deg,#B8863B 0%,#F8E9C4 40%,#E8C27A 55%,#B8863B 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:itxt 1s var(--ease) 1.1s forwards,mshine 2.4s ease 1.4s forwards}
+@keyframes mshine{from{background-position:100% 0}to{background-position:0 0}}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
 }
@@ -1179,6 +1231,7 @@ input,textarea,select{caret-color:var(--gold)}
 <main id="app" tabindex="-1"></main>
 
 <button class="core" id="core" type="button" aria-label="Modules" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" id="coreIc" aria-hidden="true"></svg></button>
+<nav class="dock" id="dock" aria-label="Navigation"></nav><div class="more" id="more" aria-label="Tes modules"></div>
 <div class="wheel" id="wheel" hidden><div class="wb"></div><p class="w-hint" id="wheelHint" aria-live="polite"></p><div id="wheelItems"></div></div>
 
 <dialog class="sheet" id="shiftSheet" aria-labelledby="shiftSheetTitle"><div class="sheet-in" id="shiftSheetBody"></div></dialog>

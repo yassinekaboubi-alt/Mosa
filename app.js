@@ -502,6 +502,8 @@ const ICON = {
 };
 /* Mini-icônes des planètes (chemins 24×24) */
 const GLYPH = {
+  code: '<circle cx="5.5" cy="16" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18.5" cy="16" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5.5 16l4-6h5l4 6M14.5 10l-2-3h-2.5M9.5 10h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
+  ile: '<path d="M12 20V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 9C10 6 7 5.5 4.5 6.5M12 9c2-3 5-3.5 7.5-2.5M12 9c-1-3-3.5-4.5-6-4.5M12 9c1-3 3.5-4.5 6-4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M3 20.5c2 0 2-1.2 4.5-1.2S9.5 20.5 12 20.5s2-1.2 4.5-1.2 2.5 1.2 4.5 1.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
   projets: '<path d="M6 21V4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M6 4h11l-2.5 4L17 12H6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
   apprendre: '<path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5zM12 6.5v13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
   reset: '<path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M19.5 4.5v3.8h-3.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
@@ -534,11 +536,12 @@ function tween(dur, fn, done) {
 
 const COACH = {
   bizm: ['Ton business, appel après appel', 'Touche « +1 appel » à chaque appel passé, même depuis ton CRM : la jauge suit ton objectif du jour. Ou lance une session : Mosa te présente tes prospects un par un, avec le bouton pour appeler et le résultat en un toucher. Importe ta liste en collant tes lignes, et note tes ventes et tes dépenses pour voir ton bénéfice du mois.'],
+  codem: ['Ton code moto', 'Réviser l\'ETM : entraînement de 10 questions (les questions que tu maîtrises le moins passent d\'abord), examen blanc de 40 questions comme le jour J (35 bonnes réponses pour réussir), ou révision par thème. Une question est maîtrisée après deux bonnes réponses d\'affilée.'],
   projm: ['Tes grands projets', 'Chaque projet a une date et des étapes. Mosa te montre toujours la prochaine : touche « C\'est fait » quand elle l\'est. Ajoute, modifie, réordonne comme tu veux.'],
   apprm: ['Dix minutes par jour', 'Deux parcours : l\'art de vendre, et le business selon les règles de l\'islam. Chaque palier s\'ouvre quand tu as appliqué le précédent.'],
   routinem: ['Ta routine', 'Quelques gestes le midi et le soir. Tout coché, la journée est bouclée et ta série continue.'],
   resetm: ['Ton reset du dimanche soir', 'Une heure pour faire le bilan et préparer la semaine. Tout coché, c\'est un reset complet.'],
-  orbite: ['Ton système', 'Chaque planète est un module, son anneau doré montre où tu en es. Touche une planète pour y aller, fais tourner le système du doigt. Touche le soleil pour ouvrir le Flux. Partout dans l\'app, le noyau doré en bas ouvre la roue des modules : touche-le, ou appuie et glisse vers un module.'],
+  orbite: ['Ton île', 'Chaque villa sur pilotis est un module : elle se construit avec tes actes, du ponton jusqu\'au toit de chaume, puis s\'illumine avec sa piscine. Touche une villa pour y aller, et Mosa 24, la supérette au centre, pour ouvrir le Flux. En bas, ta barre de navigation ; « Plus » ouvre tes autres modules.'],
   parcours: ['12 mois pour te former au business', 'Fais glisser l\'anneau ou touche une lune pour choisir un mois. Chaque mois se fait dans l\'ordre :', ['Écoute et lis les ressources', 'Coche les acquis quand tu les maîtrises', 'Fais l\'exercice pratique', 'Note ce que tu retiens']],
   arabe: ['Comprendre le sens de ce que tu récites', 'Quelques minutes de quiz par jour suffisent. Chaque étoile de la constellation est un mot : elle brille quand il est maîtrisé (3 bonnes réponses).'],
   routine: ['Ta 1 h 30 quotidienne', 'L\'anneau est découpé en 4 blocs. Touche un bloc quand il est fait : les 4 faits, la journée est validée et ta série continue.'],
@@ -3792,7 +3795,7 @@ function openSettings() {
     <p class="gt">Parcours</p>
     <div class="group"><div class="cell"><label for="sStart">Date de début</label><input type="date" id="sStart" value="${S.start}"></div></div>
     <p class="hint">Sert à calculer le mois en cours. Tes cases cochées sont conservées si tu la changes.</p>
-    <p class="hint" style="margin-top:30px;text-align:center">Mosa · v1.4 · fonctionne hors ligne</p>`;
+    <p class="hint" style="margin-top:30px;text-align:center">Mosa · v1.7 · fonctionne hors ligne</p>`;
   if (!$('#settingsSheet').open) $('#settingsSheet').showModal();
   if (navigator.storage && navigator.storage.persisted) navigator.storage.persisted().then(p => { const el = $('#persistInfo'); if (el && p) el.textContent = 'Stockage protégé contre le nettoyage automatique.'; }).catch(() => {});
 }
@@ -4653,7 +4656,7 @@ function vProjM() {
   ${P.map(p => { const done = p.etapes.filter(e => e.done).length, tot = p.etapes.length, nx = p.etapes.find(e => !e.done), left = p.date ? Math.ceil((parseDate(p.date) - parseDate(todayISO())) / 864e5) : null;
     return `<section class="pjcard"><div class="row between" style="align-items:flex-start;gap:10px"><h2 style="margin:0">${esc(p.nom)}</h2>${left != null ? `<span class="pjleft"><b class="num">${left >= 0 ? left : 0}</b><small>jours</small></span>` : ''}</div>
       <div class="bar" style="margin-top:10px"><i style="width:${tot ? done / tot * 100 : 0}%"></i></div><p class="small muted" style="margin:6px 0 0">${done} étape${done > 1 ? 's' : ''} sur ${tot}${p.date ? ` · objectif le ${DAY_LONG.format(parseDate(p.date))}` : ''}</p>
-      ${nx ? `<div class="pjnext"><p class="eyebrow" style="margin:0">Prochaine étape</p><p style="margin:4px 0 10px;font:400 1.2rem/1.35 var(--serif)">${esc(nx.t)}</p><button class="btn sm" data-pjdone="${p.id}|${nx.id}">C'est fait</button></div>` : '<p class="small" style="color:var(--mint);margin:10px 0 0">Projet accompli. Alhamdulillah.</p>'}
+      ${nx ? `<div class="pjnext"><p class="eyebrow" style="margin:0">Prochaine étape</p><p style="margin:4px 0 10px;font:400 1.2rem/1.35 var(--serif)">${esc(nx.t)}</p><div class="row" style="gap:8px;flex-wrap:wrap"><button class="btn sm" data-pjdone="${p.id}|${nx.id}">C'est fait</button>${/code moto/i.test(nx.t) ? '<button class="btn sm ghost" data-goto="code">Réviser le code</button>' : ''}</div></div>` : '<p class="small" style="color:var(--mint);margin:10px 0 0">Projet accompli. Alhamdulillah.</p>'}
       <details class="hadv"><summary>Toutes les étapes</summary>
         <div class="checks">${p.etapes.map(e => `<label class="check"><input type="checkbox" data-pjck="${p.id}|${e.id}" ${e.done ? 'checked' : ''}><span class="box">${ICON.tick}</span><span class="txt">${esc(e.t)}</span></label>`).join('')}</div>
         <div class="row" style="margin-top:8px;gap:8px"><input id="pjE-${p.id}" placeholder="Nouvelle étape" style="flex:1"><button class="btn sm" data-pjadd="${p.id}">Ajouter</button></div>
@@ -4770,6 +4773,118 @@ function rtChange(t) {
   return false;
 }
 
+/* =====================================================================
+   MOSA · CODE MOTO (ETM) — révision par thèmes, entraînement, examen blanc
+   Banque de questions écrite pour Mosa (inspirée des 10 thèmes officiels),
+   pas une copie des banques officielles. S.m.code = { q{ id:{ ok, st, seen } }, ex[{ d, s }] }
+   ===================================================================== */
+const CTH = { circ: 'Circulation', cond: 'Conducteur', route: 'Route', usagers: 'Autres usagers', divers: 'Notions diverses', secours: 'Premiers secours', prendre: 'Prendre et quitter son véhicule', meca: 'Mécanique et équipements', passager: 'Passager et véhicule', env: 'Environnement' };
+const CQ = [
+  ['c1', 'circ', 'Permis probatoire : vitesse maximale sur autoroute par temps sec ?', ['130 km/h', '110 km/h', '90 km/h'], 1, 'En période probatoire, la vitesse est limitée à 110 km/h sur autoroute, 100 sur voie rapide et 80 sur les autres routes.'],
+  ['c2', 'circ', 'Hors permis probatoire, vitesse maximale sur autoroute par temps de pluie ?', ['130 km/h', '110 km/h', '100 km/h'], 1, 'Par temps de pluie, la limite passe de 130 à 110 km/h sur autoroute.'],
+  ['c3', 'circ', 'En agglomération, sans panneau particulier, la vitesse maximale est de…', ['30 km/h', '50 km/h', '70 km/h'], 1, 'La règle générale en agglomération est 50 km/h, sauf indication contraire (zones 30, par exemple).'],
+  ['c4', 'circ', 'Quelle distance de sécurité garder avec le véhicule de devant ?', ['Au moins 1 seconde', 'Au moins 2 secondes', 'Au moins 5 mètres'], 1, 'La distance de sécurité correspond au minimum à 2 secondes de parcours, davantage sur chaussée mouillée.'],
+  ['c5', 'circ', 'À moto, de jour, les feux de croisement doivent être…', ['Allumés', 'Éteints', 'Allumés seulement par mauvais temps'], 0, 'Les motos doivent circuler feux de croisement allumés, de jour comme de nuit, pour être vues.'],
+  ['c6', 'circ', 'Dépasser par la droite est autorisé…', ['Jamais', 'Quand le véhicule de devant a signalé qu\'il tourne à gauche', 'Dès que la voie de droite est libre'], 1, 'On dépasse par la gauche ; par la droite, seulement si le véhicule devant a indiqué qu\'il tourne à gauche (ou en cas de circulation en files ininterrompues).'],
+  ['c7', 'circ', 'À une intersection sans panneau ni feu, qui a la priorité ?', ['Le véhicule le plus rapide', 'Le véhicule qui vient de droite', 'Le véhicule qui vient de gauche'], 1, 'Sans signalisation, c\'est la priorité à droite.'],
+  ['c8', 'circ', 'Au panneau STOP, si personne n\'arrive…', ['Je ralentis et je passe', 'Je marque un arrêt complet', 'Je klaxonne et je passe'], 1, 'Le STOP impose un arrêt complet à la limite de la chaussée, même si la voie est libre.'],
+  ['c9', 'circ', 'Une ligne blanche continue…', ['Peut être franchie pour dépasser un deux-roues', 'Ne doit être ni franchie ni chevauchée', 'Peut être chevauchée brièvement'], 1, 'Une ligne continue ne se franchit pas et ne se chevauche pas.'],
+  ['d1', 'cond', 'Permis probatoire : taux d\'alcool maximal autorisé dans le sang ?', ['0,2 g/L', '0,5 g/L', '0,8 g/L'], 0, 'En période probatoire, la limite est de 0,2 g/L de sang, c\'est-à-dire concrètement zéro verre.'],
+  ['d2', 'cond', 'Hors période probatoire, taux d\'alcool maximal dans le sang ?', ['0,2 g/L', '0,5 g/L', '0,8 g/L'], 1, 'La limite générale est de 0,5 g/L de sang.'],
+  ['d3', 'cond', 'Téléphoner en tenant son téléphone en main en roulant est…', ['Toléré à faible vitesse', 'Interdit', 'Autorisé à l\'arrêt au feu rouge'], 1, 'Tenir son téléphone en main en conduisant est interdit, y compris à l\'arrêt dans la circulation.'],
+  ['d4', 'cond', 'Sur un long trajet, il est conseillé de faire une pause…', ['Toutes les 2 heures environ', 'Toutes les 5 heures', 'Seulement en cas de fatigue'], 0, 'Une pause toutes les 2 heures environ réduit le risque de somnolence.'],
+  ['d5', 'cond', 'Un médicament avec un pictogramme rouge (niveau 3) signifie…', ['Soyez prudent', 'Ne conduisez pas', 'Aucun danger'], 1, 'Niveau 3 (rouge) : « Attention, danger : ne pas conduire ».'],
+  ['r1', 'route', 'Sur chaussée mouillée, la distance de freinage…', ['Diminue', 'Reste la même', 'Augmente'], 2, 'L\'adhérence baisse : la distance de freinage augmente fortement.'],
+  ['r2', 'route', 'À moto, sous la pluie, quelles surfaces sont particulièrement glissantes ?', ['Les marquages au sol et les plaques d\'égout', 'Le bitume neuf uniquement', 'Aucune en particulier'], 0, 'Peintures au sol, plaques métalliques et pavés deviennent très glissants quand ils sont mouillés.'],
+  ['r3', 'route', 'En aquaplaning, il faut…', ['Freiner fort', 'Relâcher les gaz et garder le guidon droit', 'Accélérer pour en sortir'], 1, 'On ne freine pas brusquement : on relâche les gaz en douceur et on garde la direction.'],
+  ['r4', 'route', 'Des gravillons dans un virage : quand réduire sa vitesse ?', ['Pendant le virage', 'Avant d\'entrer dans le virage', 'Ce n\'est pas nécessaire'], 1, 'On ralentit avant, moto encore droite, et on évite de freiner sur les gravillons.'],
+  ['r5', 'route', 'Dans un virage, où regarder ?', ['La roue avant', 'Le bord de la route', 'Vers la sortie du virage'], 2, 'La moto va là où l\'on regarde : on vise la sortie du virage.'],
+  ['r6', 'route', 'Quel frein fournit l\'essentiel de la puissance de freinage ?', ['Le frein avant', 'Le frein arrière', 'Le frein moteur'], 0, 'Lors d\'un freinage, le poids se reporte à l\'avant : c\'est le frein avant qui freine le plus, en combinaison avec l\'arrière.'],
+  ['r7', 'route', 'Freiner fort en courbe : que faire d\'abord ?', ['Pencher davantage', 'Redresser la moto', 'Débrayer'], 1, 'On redresse la moto avant de freiner fort, pour garder l\'adhérence.'],
+  ['u1', 'usagers', 'Derrière un poids lourd, le principal danger est…', ['Son bruit', 'De se trouver dans ses angles morts', 'Sa lenteur'], 1, 'Un camion a de grands angles morts : on reste visible dans ses rétroviseurs.'],
+  ['u2', 'usagers', 'Hors agglomération, pour dépasser un cycliste, on laisse au moins…', ['50 cm', '1 mètre', '1,5 mètre'], 2, '1,5 m hors agglomération, 1 m en agglomération.'],
+  ['u3', 'usagers', 'Un piéton manifeste clairement l\'intention de traverser au passage piéton…', ['Il doit attendre', 'Je dois lui céder le passage', 'Je klaxonne pour le prévenir'], 1, 'On cède le passage au piéton engagé ou qui manifeste clairement l\'intention de traverser.'],
+  ['u4', 'usagers', 'En agglomération, un bus signale qu\'il quitte son arrêt…', ['Je garde ma priorité', 'Je dois lui permettre de partir', 'Je le dépasse vite'], 1, 'En agglomération, on doit laisser les bus quitter leur arrêt.'],
+  ['n1', 'divers', 'Un premier permis : combien de points au départ ?', ['6 points', '8 points', '12 points'], 0, 'Le permis probatoire démarre avec 6 points, puis monte progressivement jusqu\'à 12 en l\'absence d\'infraction.'],
+  ['n2', 'divers', 'Durée de la période probatoire, sans conduite accompagnée ?', ['1 an', '2 ans', '3 ans'], 2, '3 ans (2 ans après un apprentissage anticipé de la conduite).'],
+  ['n3', 'divers', 'Avec le permis A2, la puissance maximale de la moto est de…', ['35 kW', '50 kW', 'Sans limite'], 0, 'Le permis A2 limite la puissance à 35 kW.'],
+  ['n4', 'divers', 'Passer du permis A2 au permis A demande…', ['Un nouvel examen complet', '2 ans de A2 puis une formation de 7 heures', 'Rien, c\'est automatique'], 1, 'Après 2 ans de permis A2, une formation de 7 heures permet d\'obtenir le permis A.'],
+  ['n5', 'divers', 'Rouler à moto sans assurance est…', ['Toléré quelques jours', 'Interdit', 'Autorisé si on ne roule pas loin'], 1, 'L\'assurance responsabilité civile est obligatoire pour tout véhicule qui circule.'],
+  ['s1', 'secours', 'Les trois gestes dans l\'ordre face à un accident ?', ['Alerter, protéger, secourir', 'Protéger, alerter, secourir', 'Secourir, alerter, protéger'], 1, 'On protège d\'abord (éviter le suraccident), on alerte, puis on secourt.'],
+  ['s2', 'secours', 'Le casque d\'un motard blessé conscient…', ['Je le retire pour qu\'il respire', 'Je ne le retire pas', 'Je le desserre et je le tourne'], 1, 'On ne retire pas le casque : cela peut aggraver une lésion de la colonne. Seuls les secours le font, sauf urgence vitale.'],
+  ['s3', 'secours', 'Le numéro d\'urgence européen est le…', ['15', '112', '911'], 1, 'Le 112 fonctionne dans toute l\'Union européenne (en France, aussi le 15, le 17 et le 18).'],
+  ['s4', 'secours', 'Une victime saigne abondamment : premier geste ?', ['Lui donner à boire', 'Appuyer fort sur la plaie', 'La faire marcher'], 1, 'On comprime directement la plaie pour arrêter le saignement, puis on alerte.'],
+  ['p1', 'prendre', 'Avant de partir, je vérifie notamment…', ['Les pneus, les freins, les feux et la chaîne', 'Seulement le niveau d\'essence', 'Rien si la moto a roulé la veille'], 0, 'Un rapide contrôle des pneus, freins, feux et de la chaîne évite bien des problèmes.'],
+  ['p2', 'prendre', 'Avant de démarrer, la béquille latérale…', ['Peut rester dépliée', 'Doit être relevée', 'Se relève seule en roulant'], 1, 'Une béquille dépliée peut toucher le sol en virage et provoquer une chute.'],
+  ['p3', 'prendre', 'Stationner sa moto sur le trottoir est…', ['Toujours autorisé', 'Interdit, sauf si une signalisation l\'autorise', 'Autorisé la nuit'], 1, 'Le stationnement sur trottoir est interdit, sauf emplacement ou signalisation qui l\'autorise.'],
+  ['m1', 'meca', 'Équipements obligatoires pour le conducteur ?', ['Casque homologué et gants certifiés', 'Casque seulement', 'Blouson et bottes'], 0, 'Casque homologué et gants certifiés sont obligatoires ; blouson, bottes et pantalon adaptés sont fortement conseillés.'],
+  ['m2', 'meca', 'Sur le casque, les autocollants rétroréfléchissants sont…', ['Décoratifs', 'Obligatoires', 'Interdits'], 1, 'Ils sont obligatoires, pour être vu la nuit.'],
+  ['m3', 'meca', 'La pression des pneus se vérifie…', ['À froid', 'Après un long trajet', 'Moteur allumé'], 0, 'On vérifie à froid : un pneu chaud donne une pression faussée.'],
+  ['m4', 'meca', 'La chaîne de transmission doit être…', ['Ignorée jusqu\'à ce qu\'elle casse', 'Tendue et graissée régulièrement', 'Le plus tendue possible'], 1, 'Une chaîne bien réglée et graissée dure plus longtemps et évite la casse.'],
+  ['m5', 'meca', 'Le gilet haute visibilité à moto…', ['N\'existe pas pour les motards', 'Doit être à disposition et porté en cas d\'arrêt d\'urgence', 'Se porte en permanence'], 1, 'Il doit être à disposition et porté si on s\'arrête en urgence au bord de la route.'],
+  ['v1', 'passager', 'Le passager doit porter…', ['Un casque seulement', 'Un casque et des gants', 'Rien d\'obligatoire'], 1, 'Casque homologué et gants certifiés sont obligatoires aussi pour le passager.'],
+  ['v2', 'passager', 'Un enfant de moins de 5 ans comme passager…', ['C\'est interdit dans tous les cas', 'Doit être dans un siège adapté avec système de retenue', 'Peut s\'asseoir normalement'], 1, 'Avant 5 ans, l\'enfant doit être installé dans un siège adapté, muni d\'un système de retenue.'],
+  ['v3', 'passager', 'Avec un passager, la distance de freinage…', ['Diminue', 'Ne change pas', 'Augmente'], 2, 'Le poids supplémentaire allonge la distance de freinage : on garde plus de distance.'],
+  ['e1', 'env', 'Un pot d\'échappement non homologué est…', ['Autorisé s\'il est beau', 'Interdit', 'Autorisé hors agglomération'], 1, 'Un échappement doit être homologué ; trop bruyant, il est sanctionné.'],
+  ['e2', 'env', 'L\'éco-conduite consiste surtout à…', ['Accélérer fort puis freiner', 'Anticiper et rouler à allure régulière', 'Rouler moteur en surrégime'], 1, 'Anticiper et garder une allure régulière réduit la consommation et les risques.'],
+  ['e3', 'env', 'Dans une zone à faibles émissions, il faut…', ['Une vignette Crit\'Air adaptée', 'Un gilet jaune', 'Un permis spécial'], 0, 'Les zones à faibles émissions demandent une vignette Crit\'Air, avec des règles qui dépendent de chaque ville.']
+];
+const CM = { mode: null, list: [], i: 0, score: 0, pick: null };
+function cd() { const m = M(); m.code = m.code && typeof m.code === 'object' ? m.code : {}; m.code.q = m.code.q || {}; m.code.ex = m.code.ex || []; return m.code; }
+const cMast = id => (cd().q[id] || {}).st >= 2;
+function cStart(mode, th) {
+  const q = cd().q, all = CQ.filter(x => !th || x[1] === th);
+  let list;
+  if (mode === 'exam') list = all.slice().sort(() => Math.random() - .5).slice(0, 40);
+  else list = all.slice().sort((a, b) => ((q[a[0]] || {}).st || 0) - ((q[b[0]] || {}).st || 0) || Math.random() - .5).slice(0, th ? all.length : 10);
+  Object.assign(CM, { mode, th, list, i: 0, score: 0, pick: null });
+}
+function vCodeM() {
+  const c = cd(), mast = CQ.filter(x => cMast(x[0])).length, last = c.ex[c.ex.length - 1], best = c.ex.reduce((a, e) => Math.max(a, e.s), 0);
+  if (CM.mode && CM.i < CM.list.length) {
+    const x = CM.list[CM.i], done = CM.pick != null;
+    return `${pageHead('Code moto', CM.mode === 'exam' ? 'Examen blanc · 35 bonnes réponses sur 40 pour réussir' : CM.th ? CTH[CM.th] : 'Entraînement', 'codem')}
+    <div class="cbar"><i style="width:${CM.i / CM.list.length * 100}%"></i></div><p class="small muted" style="margin:6px 0 0">Question ${CM.i + 1} sur ${CM.list.length}${CM.mode === 'exam' ? '' : ` · ${CM.score} bonne${CM.score > 1 ? 's' : ''}`}</p>
+    <section class="cq"><p class="eyebrow" style="margin:0">${CTH[x[1]]}</p><h2 style="margin:8px 0 14px;font:400 1.35rem/1.35 var(--serif)">${esc(x[2])}</h2>
+      ${x[3].map((o, k) => `<button class="copt ${done ? (k === x[4] ? 'ok' : k === CM.pick ? 'ko' : '') : ''}" data-copt="${k}" ${done ? 'disabled' : ''}><b>${'ABC'[k]}</b><span>${esc(o)}</span></button>`).join('')}
+      ${done && CM.mode !== 'exam' ? `<p class="cexp"><b>${CM.pick === x[4] ? 'Bonne réponse.' : 'Pas tout à fait.'}</b> ${esc(x[5])}</p>` : ''}
+      ${done ? `<button class="btn block" data-cnext style="margin-top:12px">${CM.i + 1 < CM.list.length ? 'Question suivante' : 'Voir mon résultat'}</button>` : ''}
+    </section><button class="link-btn small" data-cstop style="display:block;margin:14px auto 0">Arrêter</button>`;
+  }
+  if (CM.mode && CM.i >= CM.list.length) {
+    const n = CM.list.length, s = CM.score, pass = CM.mode === 'exam' && s >= 35;
+    return `${pageHead('Code moto', 'Ton résultat', 'codem')}
+    <section class="cq" style="text-align:center"><p class="eyebrow">${CM.mode === 'exam' ? 'Examen blanc' : 'Entraînement'}</p><p style="font:400 3.4rem/1 var(--serif);margin:10px 0;color:var(--${CM.mode === 'exam' ? (pass ? 'mint' : 'danger') : 'gold'})">${s}<small style="font-size:1.4rem;color:var(--muted)">/${n}</small></p>
+      <p class="small" style="margin:0 0 14px">${CM.mode === 'exam' ? (pass ? 'Réussi ! À l\'examen, ce score te ferait obtenir ton code.' : `Il en faut 35 pour réussir : encore ${35 - s} de plus. Révise les thèmes où tu bloques.`) : s >= n * .8 ? 'Très bien. Tente un examen blanc.' : 'Continue : chaque erreur revient jusqu\'à ce que tu la maîtrises.'}</p>
+      <button class="btn block" data-cdone>Terminer</button></section>`;
+  }
+  const ths = Object.keys(CTH).map(k => { const L = CQ.filter(x => x[1] === k), m = L.filter(x => cMast(x[0])).length; return [k, m, L.length]; });
+  return `${pageHead('Code moto', 'L\'ETM : 40 questions, 35 bonnes réponses pour réussir.', 'codem')}
+  <div class="zhero">${ring2(mast / CQ.length, `${mast}<small>/${CQ.length}</small>`, 'questions maîtrisées', 'gold')}
+    <div class="zside"><p class="num" style="font:400 2.4rem/1 var(--serif);color:var(--${last && last.s >= 35 ? 'mint' : 'gold'});margin:0">${last ? last.s : '–'}<small style="font-size:1rem;color:var(--muted)">/40</small></p><p class="small muted" style="margin:4px 0 0">dernier examen blanc${best ? ` · record ${best}` : ''}</p></div></div>
+  <div class="row" style="gap:8px;margin-top:16px"><button class="btn" data-cgo="train" style="flex:1">S'entraîner</button><button class="btn ghost" data-cgo="exam" style="flex:1">Examen blanc</button></div>
+  <section><h2>Par thème</h2><div class="group">${ths.map(([k, m, n]) => `<button class="cell tap cth" data-cth="${k}"><span class="lbl">${CTH[k]}<span class="cbar sm"><i style="width:${n ? m / n * 100 : 0}%"></i></span></span><span class="small muted num">${m}/${n}</span>${ICON.chev}</button>`).join('')}</div></section>
+  <p class="hint">Une question est maîtrisée après deux bonnes réponses d'affilée. Ces questions sont écrites pour Mosa d'après les thèmes officiels : complète avec une appli ou un livre de code agréé avant l'examen.</p>`;
+}
+function codeClick(t) {
+  const c = s => t.closest(s); let el;
+  if ((el = c('[data-cgo]'))) { cStart(el.dataset.cgo); render(); window.scrollTo(0, 0); return true; }
+  if ((el = c('[data-cth]'))) { cStart('train', el.dataset.cth); render(); window.scrollTo(0, 0); return true; }
+  if ((el = c('[data-copt]'))) {
+    const x = CM.list[CM.i], k = Number(el.dataset.copt), q = cd().q, r = q[x[0]] = q[x[0]] || { ok: 0, st: 0, seen: 0 };
+    CM.pick = k; r.seen++; if (k === x[4]) { CM.score++; r.ok++; r.st = (r.st || 0) + 1; try { navigator.vibrate && navigator.vibrate(8); } catch (e) {} } else r.st = 0;
+    save(); if (CM.mode === 'exam') { CM.i++; CM.pick = null; } const y = window.scrollY; render(); window.scrollTo(0, y); if (CM.mode === 'exam' && CM.i >= CM.list.length) codeEnd(); return true;
+  }
+  if (c('[data-cnext]')) { CM.i++; CM.pick = null; render(); window.scrollTo(0, 0); if (CM.i >= CM.list.length) codeEnd(); return true; }
+  if (c('[data-cstop]') || c('[data-cdone]')) { CM.mode = null; render(); window.scrollTo(0, 0); return true; }
+  return false;
+}
+function codeEnd() {
+  const s = CM.score, n = CM.list.length;
+  if (CM.mode === 'exam') { cd().ex.push({ d: todayISO(), s }); save(); if (s >= 35) reward(30, { big: true, msg: ['Examen blanc réussi', `${s} sur 40. Encore quelques réussites comme celle-ci, et tu es prêt pour le vrai code.`] }); else reward(5); }
+  else reward(Math.max(2, s), { big: s === n, msg: s === n ? ['Sans faute', `${n} sur ${n}. Passe à un examen blanc.`] : null });
+}
+
 /* ---------- L'île (accueil) : une villa par module ---------- */
 const VILLAS = [
   { k: 'foi', n: 'Foi', x: 0, y: -96 }, { k: 'business', n: 'Business', x: -118, y: -58 }, { k: 'corps', n: 'Corps', x: 118, y: -58 },
@@ -4797,13 +4912,13 @@ function checkIle() {
   if (up) setTimeout(() => { chime(true); burst(40, VST[up[1]], true); gemCard(`${up[0].n} · ${VST[up[1]]}`, ['', 'Les fondations tiennent. Tout commence ici.', 'Les murs montent : ça prend forme.', 'Le toit est posé. Ta villa a de l\'allure.', 'Ta villa s\'illumine sur le lagon. Elle est à ton image : propre, belle, construite par toi.'][up[1]], ''); try { navigator.vibrate && navigator.vibrate([14, 50, 20, 50, 30]); } catch (e) {} }, 700);
 }
 function villaSvg(st) {
-  const P = '#3B2A1E', T = '#8A6A4A', W = '#FBF8F2', R = '#2F2620', G = '#E8C27A';
-  let s = st < 4 ? '<g fill="none" stroke="#FFFFFF" stroke-opacity=".35" stroke-dasharray="2 2.5"><rect x="-14" y="-18" width="28" height="16"/><path d="M-20 -17L0 -31L20 -17Z"/></g>' : '';
-  s += `<path d="M-14 0V12M-6 0V12M6 0V12M14 0V12" stroke="${P}" stroke-width="2"/>`;
-  if (st >= 1) s += `<rect x="-20" y="-2" width="40" height="4" rx="1" fill="${T}"/><path d="M-20 -2h40" stroke="${G}" stroke-opacity=".5" stroke-width=".6"/>`;
-  if (st >= 2) s += `<rect x="-14" y="-18" width="28" height="16" fill="${W}" stroke="${G}" stroke-opacity=".55" stroke-width=".6"/><rect x="-4" y="-13" width="8" height="11" fill="#21424A"/><rect x="-11" y="-14" width="5" height="5" fill="#21424A"/><rect x="6" y="-14" width="5" height="5" fill="#21424A"/>`;
-  if (st >= 3) s += `<path d="M-20 -17L0 -31L20 -17Z" fill="${R}"/><path d="M-20 -17h40" stroke="${G}" stroke-width="1.2"/><circle cx="0" cy="-31" r="1.3" fill="${G}"/>`;
-  if (st >= 4) s += `<rect x="-11" y="-14" width="5" height="5" fill="#FFD27A"/><rect x="6" y="-14" width="5" height="5" fill="#FFD27A"/><rect x="-4" y="-13" width="8" height="11" fill="#FFC55C"/><rect x="21" y="-2" width="13" height="4" rx="1" fill="${T}"/><rect x="22.5" y="-1.4" width="10" height="2.8" rx=".8" fill="#6FE3DA"/><ellipse cx="0" cy="15" rx="26" ry="4.5" fill="#FFD27A" opacity=".22"/>`;
+  let s = '<ellipse cx="0" cy="13" rx="22" ry="3" fill="#06262B" opacity=".35"/>';
+  if (st < 4) s += '<g fill="none" stroke="#FFFFFF" stroke-opacity=".38" stroke-dasharray="2 2.5"><path d="M-15 -2v-14h30v14"/><path d="M-21 -15L0 -32L21 -15Z"/></g>';
+  s += '<path d="M-14 0V12M-5 0V12M5 0V12M14 0V12" stroke="#2E2014" stroke-width="2"/>';
+  if (st >= 1) s += '<rect x="-21" y="-2" width="42" height="3.6" rx=".8" fill="url(#teak)"/><path d="M-21 -2v-4M21 -2v-4M-21 -6h42" stroke="#5A3C24" stroke-width=".8"/>';
+  if (st >= 2) s += '<rect x="-15" y="-16" width="30" height="14" fill="url(#teak)"/><rect x="-12" y="-14" width="10" height="11" fill="url(#glassW)"/><rect x="2" y="-14" width="10" height="11" fill="url(#glassW)"/><path d="M-7 -14v11M7 -14v11" stroke="#3E2817" stroke-width=".6"/>';
+  if (st >= 3) s += '<path d="M-22 -14L0 -33L22 -14Z" fill="url(#thatch)"/><path d="M-22 -14L0 -33L22 -14" fill="none" stroke="#6E4E26" stroke-width=".8"/><g stroke="#6E4E26" stroke-opacity=".55" stroke-width=".5">' + [-14, -8, -2, 4, 10].map(xx => `<path d="M${xx} -15L${xx * .45} -28"/>`).join('') + '</g><path d="M0 -33v-3" stroke="#E8C27A" stroke-width="1.2"/>';
+  if (st >= 4) s += '<rect x="-12" y="-14" width="10" height="11" fill="#FFD9A0"/><rect x="2" y="-14" width="10" height="11" fill="#FFD9A0"/><rect x="22" y="-2" width="12" height="3.6" rx=".6" fill="url(#teak)"/><rect x="23.2" y="-1.4" width="9.6" height="2.4" rx=".6" fill="#7FE6E0"/><ellipse cx="0" cy="16" rx="18" ry="3.4" fill="#FFD27A" opacity=".28"/>';
   return s;
 }
 
@@ -4830,20 +4945,146 @@ function ileBg() {
     ${palm(18, 640, .9, false)}${palm(388, 820, 1, true)}
   </svg></div>`;
 }
+/* =====================================================================
+   MOSA · DÉCOR THAÏLANDAIS RÉALISTE
+   Peint une fois (canvas) dans #thai, fixe derrière l'app ; seuls les bateaux,
+   les oiseaux, les reflets et les macaques bougent (SVG au-dessus).
+   ===================================================================== */
+let TH_W = 0, TH_H = 0, TH_MODE = '';
+function ensureThai() {
+  let g = document.getElementById('thai');
+  if (!g) {
+    g = document.createElement('div'); g.id = 'thai'; g.setAttribute('aria-hidden', 'true');
+    g.innerHTML = `<canvas></canvas><svg class="thfx" viewBox="0 0 400 900" preserveAspectRatio="xMidYMin slice">
+      <defs><linearGradient id="thHull" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A4E2C"/><stop offset="1" stop-color="#3A2414"/></linearGradient></defs>
+      <g class="thbirds" fill="none" stroke="#2A2420" stroke-width="1.1" stroke-linecap="round" opacity=".7"><path d="M0 0q3 -3 6 0q3 -3 6 0"/><path d="M14 6q2.4 -2.4 4.8 0q2.4 -2.4 4.8 0"/><path d="M-10 9q2 -2 4 0q2 -2 4 0"/></g>
+      <g class="thboat far"><path d="M0 0q20 3 42 0l-2 3q-19 3 -38 0z" fill="#2B1C12"/><path d="M8 -1h16l2 -6h-16z" fill="#E9DCC3" opacity=".9"/><path d="M42 0l5 -9" stroke="#2B1C12" stroke-width="1.4"/><path d="M45 -8l3 -2" stroke="#E8417E" stroke-width="2"/><path d="M-2 1l-8 5" stroke="#2B1C12" stroke-width="1"/></g>
+      <g class="thboat near"><path d="M0 0q46 7 98 0q-4 9 -10 10q-38 4 -80 0q-6 -2 -8 -10z" fill="url(#thHull)"/><path d="M98 0q8 -10 6 -26" stroke="#4A2E1A" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <g transform="translate(103 -24)"><path d="M0 0l-6 -4M0 0l-5 4M0 0l-8 1" stroke="#E8417E" stroke-width="2.4" stroke-linecap="round"/><path d="M-1 -1l-5 -7" stroke="#F2C46D" stroke-width="2.4" stroke-linecap="round"/><path d="M0 1l-3 7" stroke="#3FA36A" stroke-width="2.2" stroke-linecap="round"/></g>
+        <path d="M30 -2v-16h36v16" fill="none" stroke="#3A2414" stroke-width="1.6"/><path d="M26 -18q22 -7 44 0z" fill="#C9B38A"/><path d="M0 1l-22 10" stroke="#3A2414" stroke-width="1.6"/><circle cx="-22" cy="11" r="1.6" fill="#888"/>
+        <path d="M10 4q40 5 80 0" stroke="#FFFFFF" stroke-opacity=".25" stroke-width="1"/></g>
+      ${Array.from({ length: 30 }, (_, i) => `<rect class="thg" x="${150 + (i * 37) % 100}" y="${226 + (i * 53) % 260}" width="${8 + (i % 4) * 5}" height="1.3" rx=".6" fill="#FFF1C8" style="animation-delay:-${(i * .41).toFixed(2)}s"/>`).join('')}
+      <g class="thmk" transform="translate(338 812)"><ellipse cx="0" cy="0" rx="7" ry="8.5" fill="#4A3828"/><circle cx="0" cy="-10" r="5.2" fill="#4A3828"/><ellipse cx="0" cy="-9" rx="3" ry="2.6" fill="#8C6E54"/><path class="thtail" d="M5 4q12 4 10 18" stroke="#4A3828" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>
+      <g class="thmk b" transform="translate(52 760) scale(.85)"><ellipse cx="0" cy="0" rx="7" ry="8.5" fill="#4A3828"/><circle cx="0" cy="-10" r="5.2" fill="#4A3828"/><ellipse cx="0" cy="-9" rx="3" ry="2.6" fill="#8C6E54"/><path class="thtail" d="M-5 4q-12 4 -10 18" stroke="#4A3828" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>
+    </svg>`;
+    document.body.prepend(g);
+    window.addEventListener('resize', () => paintThai(true));
+  }
+  paintThai(false);
+}
+function paintThai(force) {
+  const g = document.getElementById('thai'); if (!g) return;
+  const W = innerWidth, H = innerHeight, mode = document.documentElement.dataset.mode || 'dark';
+  if (!force && W === TH_W && Math.abs(H - TH_H) < 120 && mode === TH_MODE) return; TH_W = W; TH_H = H; TH_MODE = mode;
+  const dark = mode === 'dark', c = g.querySelector('canvas'), d = Math.min(2, devicePixelRatio || 1);
+  c.width = W * d; c.height = H * d; const x = c.getContext('2d'); x.scale(d, d);
+  let seed = 23; const r = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+  const hz = Math.round(H * .245), sx = W * .5;
+  /* Ciel : heure dorée (clair) ou crépuscule (sombre) */
+  let gr = x.createLinearGradient(0, 0, 0, hz);
+  (dark ? [[0, '#141A33'], [.45, '#3B3450'], [.8, '#B8664A'], [1, '#E9A15F']] : [[0, '#7FA7C9'], [.5, '#E8C9A6'], [.85, '#F4B276'], [1, '#F9D59A']]).forEach(([o, col]) => gr.addColorStop(o, col));
+  x.fillStyle = gr; x.fillRect(0, 0, W, hz + 2);
+  if (dark) for (let i = 0; i < 120; i++) { x.fillStyle = `rgba(255,245,225,${.15 + r() * .5})`; x.beginPath(); x.arc(r() * W, r() * hz * .7, r() * .9, 0, 7); x.fill(); }
+  /* Soleil bas et halo */
+  const sy = hz - 14;
+  gr = x.createRadialGradient(sx, sy, 0, sx, sy, W * .7); gr.addColorStop(0, dark ? 'rgba(255,200,130,.7)' : 'rgba(255,236,190,.95)'); gr.addColorStop(.12, dark ? 'rgba(255,170,110,.35)' : 'rgba(255,214,150,.55)'); gr.addColorStop(1, 'rgba(255,190,120,0)');
+  x.fillStyle = gr; x.fillRect(0, 0, W, hz + 40);
+  x.fillStyle = dark ? '#FFC98A' : '#FFF1C8'; x.beginPath(); x.arc(sx, sy, 15, 0, 7); x.fill();
+  /* Nuages fins */
+  for (let i = 0; i < 9; i++) { const cy = hz * (.3 + r() * .45), cx = r() * W, w = 60 + r() * 120; gr = x.createLinearGradient(cx - w, cy, cx + w, cy); gr.addColorStop(0, 'rgba(255,220,180,0)'); gr.addColorStop(.5, dark ? 'rgba(220,140,110,.28)' : 'rgba(255,240,220,.55)'); gr.addColorStop(1, 'rgba(255,220,180,0)'); x.fillStyle = gr; x.beginPath(); x.ellipse(cx, cy, w, 3 + r() * 4, 0, 0, 7); x.fill(); }
+  /* Falaises calcaires (karsts) en trois plans, perspective atmosphérique */
+  const karst = (bx, bw, bh, col, veg, mist) => {
+    x.save(); x.beginPath(); x.moveTo(bx, hz + 2);
+    const steps = 12; for (let i = 0; i <= steps; i++) { const t = i / steps, px = bx + t * bw, top = Math.sin(t * Math.PI), jag = (r() - .5) * bh * .12; x.lineTo(px, hz - bh * (Math.pow(top, .45)) + jag); }
+    x.lineTo(bx + bw, hz + 2); x.closePath(); x.fillStyle = col; x.fill(); x.clip();
+    gr = x.createLinearGradient(0, hz - bh, 0, hz); gr.addColorStop(0, veg); gr.addColorStop(.45, 'rgba(0,0,0,0)'); x.fillStyle = gr; x.fillRect(bx, hz - bh, bw, bh);
+    x.globalAlpha = .18; for (let i = 0; i < bw / 3; i++) { x.fillStyle = r() > .5 ? '#000' : '#fff'; x.fillRect(bx + r() * bw, hz - bh + r() * bh, .8, 6 + r() * 18); } x.globalAlpha = 1;
+    gr = x.createLinearGradient(0, hz - bh * .4, 0, hz); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, mist); x.fillStyle = gr; x.fillRect(bx, hz - bh, bw, bh); x.restore();
+  };
+  const far = dark ? '#3E4660' : '#9AA9B9', mid = dark ? '#283246' : '#6F8273', near = dark ? '#18202C' : '#3F5A45';
+  karst(-20, 80, 46, far, dark ? 'rgba(60,90,80,.5)' : 'rgba(110,140,120,.5)', dark ? 'rgba(180,110,90,.5)' : 'rgba(250,215,170,.65)');
+  karst(W * .72, 70, 52, far, dark ? 'rgba(60,90,80,.5)' : 'rgba(110,140,120,.5)', dark ? 'rgba(180,110,90,.5)' : 'rgba(250,215,170,.65)');
+  karst(W * .08, 54, 64, mid, dark ? 'rgba(40,80,60,.8)' : 'rgba(60,110,70,.85)', dark ? 'rgba(150,90,80,.35)' : 'rgba(250,215,170,.4)');
+  karst(W * .84, 60, 74, mid, dark ? 'rgba(40,80,60,.8)' : 'rgba(60,110,70,.85)', dark ? 'rgba(150,90,80,.35)' : 'rgba(250,215,170,.4)');
+  karst(W - 34, 70, 108, near, dark ? 'rgba(30,70,45,.95)' : 'rgba(45,95,55,.95)', 'rgba(0,0,0,0)');
+  karst(-36, 64, 96, near, dark ? 'rgba(30,70,45,.95)' : 'rgba(45,95,55,.95)', 'rgba(0,0,0,0)');
+  /* Mer : du reflet du ciel à l'émeraude profonde */
+  gr = x.createLinearGradient(0, hz, 0, H);
+  (dark ? [[0, '#C98A5E'], [.04, '#3C6E78'], [.3, '#14505A'], [.7, '#0A3038'], [1, '#051C22']] : [[0, '#F2C694'], [.04, '#8ED3CF'], [.25, '#3FB3B0'], [.6, '#1A8C8E'], [1, '#0B5560']]).forEach(([o, col]) => gr.addColorStop(o, col));
+  x.fillStyle = gr; x.fillRect(0, hz, W, H - hz);
+  /* Reflets des falaises sur l'eau */
+  [[0, 34, 90], [W - 36, 36, 110]].forEach(([rx, rw, rh]) => { const rg = x.createLinearGradient(0, hz, 0, hz + rh); rg.addColorStop(0, dark ? 'rgba(10,20,24,.45)' : 'rgba(40,70,55,.35)'); rg.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = rg; for (let k = 0; k < rh; k += 2) { const ww = rw * (1 - k / rh * .3) + (r() - .5) * 6; x.fillRect(rx + (r() - .5) * 3, hz + k, ww, 1.4); } });
+  /* Chemin de soleil scintillant */
+  for (let i = 0; i < 260; i++) { const t = r(), py = hz + 4 + Math.pow(t, 1.6) * (H * .5), spread = 10 + (py - hz) * .32, px = sx + (r() - .5) * 2 * spread * (.4 + r() * .6), w = 3 + r() * 14 * (1 - t * .5); x.fillStyle = `rgba(255,${dark ? 210 : 236},${dark ? 150 : 190},${(.55 - t * .45) * (.4 + r() * .6)})`; x.fillRect(px - w / 2, py, w, 1 + r()); }
+  /* Rides de l'eau */
+  for (let i = 0; i < 420; i++) { const py = hz + 6 + Math.pow(r(), 1.3) * (H - hz), w = 4 + (py - hz) / H * 40 * r(); x.fillStyle = `rgba(255,255,255,${.03 + r() * .07})`; x.fillRect(r() * W, py, w, 1); x.fillStyle = `rgba(0,30,40,${.04 + r() * .08})`; x.fillRect(r() * W, py + 2, w * .8, 1); }
+  /* Brume à l'horizon */
+  gr = x.createLinearGradient(0, hz - 18, 0, hz + 26); gr.addColorStop(0, 'rgba(255,230,200,0)'); gr.addColorStop(.5, dark ? 'rgba(220,150,120,.25)' : 'rgba(255,236,210,.45)'); gr.addColorStop(1, 'rgba(255,230,200,0)'); x.fillStyle = gr; x.fillRect(0, hz - 18, W, 44);
+  /* Rochers au premier plan avec végétation (bas gauche et droite) */
+  const rock = (cx, cy, rw, rh) => {
+    gr = x.createLinearGradient(cx - rw, cy - rh, cx + rw, cy + rh); gr.addColorStop(0, dark ? '#4A4842' : '#8C8476'); gr.addColorStop(.6, dark ? '#24241F' : '#4E483E'); gr.addColorStop(1, dark ? '#0E100D' : '#24211B');
+    x.fillStyle = gr; x.beginPath(); x.moveTo(cx - rw, H + 10);
+    const n = 14; for (let i = 0; i <= n; i++) { const t = i / n, ang = Math.PI * (1 - t), px = cx + Math.cos(ang) * rw * (.9 + r() * .15), py = cy - Math.sin(ang) * rh * (.75 + r() * .4); x.lineTo(px, py); }
+    x.lineTo(cx + rw, H + 10); x.closePath(); x.fill();
+    x.globalAlpha = .25; for (let i = 0; i < 30; i++) { x.fillStyle = r() > .5 ? '#000' : '#fff'; x.fillRect(cx + (r() - .5) * rw * 1.6, cy - rh * r(), .8, 4 + r() * 10); } x.globalAlpha = 1;
+    for (let i = 0; i < 60; i++) { x.fillStyle = ['#2E6B45', '#3E8C5A', '#1F4F33', '#4FA06E'][i % 4]; const a2 = Math.PI * (.15 + r() * .7); x.beginPath(); x.ellipse(cx + Math.cos(a2) * rw * .85 * (r() * .9), cy - Math.sin(a2) * rh * (.6 + r() * .5), 2 + r() * 6, 1.5 + r() * 3, r() * 3, 0, 7); x.fill(); }
+    x.strokeStyle = 'rgba(255,255,255,.35)'; x.lineWidth = 1; for (let i = 0; i < 6; i++) { const fy = cy + rh * .25 + i * 3, fw = rw * (1 + i * .05); x.beginPath(); x.moveTo(cx - fw, fy); x.quadraticCurveTo(cx, fy + 2, cx + fw, fy); x.globalAlpha = .35 - i * .05; x.stroke(); } x.globalAlpha = 1;
+  };
+  rock(W * .95, H * .95, W * .22, H * .085); rock(W * .03, H * .9, W * .17, H * .07);
+}
+
 function vIle() {
   const now = new Date(), h = now.getHours(), hello = h < 5 ? 'Bonne nuit' : h < 18 ? 'Bonjour' : 'Bonsoir', k = todayISO();
   const vil = VILLAS.map(v => { const g = vGrowth(v.k); return `<g class="villa" data-goto="${v.k}" role="button" tabindex="0" aria-label="${v.n} : ${VST[g.st]}" transform="translate(${v.x} ${v.y})"><rect x="-34" y="-44" width="68" height="82" fill="transparent"/><g transform="scale(1.25)">${villaSvg(g.st)}</g><text y="30" class="vn">${v.n}</text>${g.st < 4 ? `<rect x="-14" y="34" width="28" height="2.4" rx="1.2" class="vtrk"/><rect x="-14" y="34" width="${(28 * g.p).toFixed(1)}" height="2.4" rx="1.2" class="vbar"/>` : ''}</g>`; }).join('');
   const fd = dayDone(k), fn = S.faith.habits.length, calls = callsDay(), g = Number(bz().goal) || 150, ws = weekSessions().length;
   const pn = prayerNow(), nx = nextPrayer(), pj = M().proj.map(p => p.etapes.find(e => !e.done)).find(Boolean), ap = M().appr.study[k];
   return `${pageHead(`${hello}, <em>Samir</em>`, DAY_LONG.format(now).replace(/^./, c => c.toUpperCase()), 'orbite')}
-  ${ileBg()}
   <div class="ile" id="stage"><svg viewBox="-200 -150 400 300" aria-label="Ton île : une villa par module">
-    <ellipse cx="0" cy="14" rx="70" ry="12" fill="#FFFFFF" opacity=".08"/>
-    <ellipse cx="0" cy="8" rx="56" ry="26" fill="#E9D8B4"/><ellipse cx="0" cy="4" rx="42" ry="18" fill="#7FB98F"/>
-    <path d="M-6 6q-2-18 4-30" stroke="#6B4F36" stroke-width="2.4" fill="none"/><path d="M-2 -24q-14-4-20 4M-2 -24q-6-12-18-10M-2 -24q6-12 18-8M-2 -24q14-2 18 8" stroke="#3E8C66" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-    <path d="M14 8q2-14-2-22" stroke="#6B4F36" stroke-width="2" fill="none"/><path d="M12 -14q-10-2-14 4M12 -14q8-8 14-4M12 -14q10 0 12 6" stroke="#3E8C66" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-    <text id="sunNour" y="40" text-anchor="middle" style="font-size:10.5px;font-weight:700;letter-spacing:.06em;fill:var(--gold)">✦ ${nourDay()}</text>
-    <ellipse data-sun cx="0" cy="8" rx="56" ry="30" fill="transparent" role="button" tabindex="0" aria-label="Ouvrir le Flux" style="cursor:pointer"/>
+    <defs><linearGradient id="islR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B9AD98"/><stop offset=".55" stop-color="#6E6658"/><stop offset="1" stop-color="#2E2A24"/></linearGradient>
+      <linearGradient id="thatch" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D7B577"/><stop offset="1" stop-color="#8A6634"/></linearGradient>
+      <linearGradient id="teak" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A5536"/><stop offset="1" stop-color="#3E2817"/></linearGradient>
+      <linearGradient id="glassW" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9FD9DA"/><stop offset="1" stop-color="#2B5C66"/></linearGradient></defs>
+    <defs><linearGradient id="kLime" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D9CDB4"/><stop offset=".35" stop-color="#A89A80"/><stop offset=".75" stop-color="#5E564A"/><stop offset="1" stop-color="#2E2A24"/></linearGradient>
+      <linearGradient id="kRefl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2E2A24" stop-opacity=".55"/><stop offset="1" stop-color="#2E2A24" stop-opacity="0"/></linearGradient>
+      <linearGradient id="kStain" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C98A4A" stop-opacity="0"/><stop offset=".5" stop-color="#B9733A" stop-opacity=".35"/><stop offset="1" stop-color="#5E4630" stop-opacity=".6"/></linearGradient>
+      <linearGradient id="m24wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBF8F2"/><stop offset="1" stop-color="#DCD3C2"/></linearGradient><linearGradient id="m24glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF6DE"/><stop offset="1" stop-color="#FFE2A8"/></linearGradient>
+      <linearGradient id="kHull" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A5A30"/><stop offset="1" stop-color="#3A2414"/></linearGradient></defs>
+    <path class="walks" d="${(() => { const P = ['foi', 'corps', 'projets', 'reset', 'routine', 'apprendre', 'argent', 'business'].map(k => VILLAS.find(v => v.k === k)); return 'M' + P.map(v => `${v.x} ${v.y + 14}`).join('L') + 'Z'; })()}" fill="none" stroke="#7A5A3A" stroke-width="2.6" stroke-linejoin="round" opacity=".75"/>
+    <path class="walks" d="${(() => { const P = ['foi', 'corps', 'projets', 'reset', 'routine', 'apprendre', 'argent', 'business'].map(k => VILLAS.find(v => v.k === k)); return 'M' + P.map(v => `${v.x} ${v.y + 14}`).join('L') + 'Z'; })()}" fill="none" stroke="#D9B98A" stroke-width=".8" stroke-dasharray="1.6 2.2" stroke-linejoin="round" opacity=".7"/>
+    <!-- « Mosa 24 » : la supérette ouverte jour et nuit, souvenir de Thaïlande de Samir (création originale) -->
+    <g transform="translate(6 2)">
+      <ellipse cx="0" cy="34" rx="62" ry="9" fill="#06262B" opacity=".35"/>
+      <path d="M-58 30q10 -10 34 -11h48q24 1 34 11q-20 9 -58 9t-58 -9z" fill="#EADCC0"/>
+      <path d="M-52 27q6 -5 18 -6" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="1" fill="none"/>
+      <ellipse cx="0" cy="40" rx="46" ry="6" fill="#FFE2A0" opacity=".28"/>
+      <rect x="-34" y="-20" width="68" height="46" rx="2" fill="url(#m24wall)"/>
+      <rect x="-37" y="-24" width="74" height="6" rx="1.5" fill="#123A40"/>
+      <rect x="-30" y="-40" width="60" height="15" rx="3" fill="#0E2E33"/>
+      <rect x="-30" y="-40" width="60" height="15" rx="3" fill="none" stroke="#E8C27A" stroke-width="1"/>
+      <text x="0" y="-29.5" text-anchor="middle" style="font:700 9px var(--serif);letter-spacing:.14em;fill:#F8E3A8">MOSA · 24</text>
+      <ellipse cx="0" cy="-32" rx="42" ry="14" fill="#FFD27A" opacity=".16"/>
+      <rect x="-37" y="-18" width="74" height="4" fill="#138A8A"/><rect x="-37" y="-14.5" width="74" height="1.2" fill="#E8C27A"/>
+      <rect x="-29" y="-10" width="58" height="34" fill="url(#m24glass)"/>
+      <g stroke="#E2D2B0" stroke-width=".8">${[-2, 6, 14].map(y => `<path d="M-27 ${y}h20M7 ${y}h20"/>`).join('')}</g>
+      <g>${[[-26, -6], [-21, -6], [-16, -6], [-11, -6], [10, -6], [15, -6], [20, -6], [-25, 2], [-19, 2], [-13, 2], [9, 2], [14, 2], [21, 2], [-24, 10], [-17, 10], [12, 10], [18, 10]].map(([x, y], n) => `<rect x="${x}" y="${y}" width="${3 + (n % 2)}" height="${5 - (n % 3)}" rx=".5" fill="${['#7FC8F0', '#F2C46D', '#F07A8A', '#8ED6B5', '#B9A2F0', '#FFFFFF'][n % 6]}" opacity=".9"/>`).join('')}</g>
+      <rect x="-6" y="-8" width="12" height="32" fill="#FFF6DE" opacity=".55"/><path d="M0 -8v32" stroke="#C9B48A" stroke-width=".8"/>
+      <rect x="-31" y="-10" width="62" height="34" fill="none" stroke="#D9C49A" stroke-width="1.2"/>
+      <g transform="translate(46 22)"><circle cx="-8" cy="3" r="3.2" fill="#1E1A15"/><circle cx="8" cy="3" r="3.2" fill="#1E1A15"/><path d="M-8 3h6l4 -7h6l4 7" fill="none" stroke="#2A5A60" stroke-width="2.4" stroke-linejoin="round"/><path d="M4 -4l-2 -6h4" stroke="#1E1A15" stroke-width="1.4" fill="none"/><path d="M-6 -1h10" stroke="#E8C27A" stroke-width="2" stroke-linecap="round"/></g>
+      <g transform="translate(-48 24)"><path d="M0 0q-2 -22 4 -40" stroke="#6B4F36" stroke-width="2.4" fill="none"/><path d="M4 -40q-12 -3 -18 4M4 -40q-6 -9 -16 -7M4 -40q6 -9 15 -6M4 -40q12 0 15 8" stroke="#3E8C5A" stroke-width="3" fill="none" stroke-linecap="round"/></g>
+      <path d="M-34 -24Q0 -16 34 -24" stroke="#2A1E14" stroke-width=".5" fill="none"/>
+      ${[-28, -19, -10, -1, 8, 17, 26].map(x => `<circle cx="${x}" cy="${(-24 + 6 * (1 - Math.pow(x / 34, 2))).toFixed(1)}" r="1.4" fill="#FFE29A"/>`).join('')}
+    </g>
+    <!-- îlot à plage blanche et ses bateaux à longue queue -->
+    <g transform="translate(-62 42) scale(.82)">
+      <path d="M-26 6q6 -6 18 -7q16 -1 24 4q4 2 6 4z" fill="#F2E8D2"/>
+      <path d="M-20 1q-2 -14 8 -20q10 -6 18 2q6 6 4 18z" fill="url(#kLime)"/>
+      <g fill="#2E6B45">${[[-10, -18, 5], [0, -21, 5.5], [8, -15, 4], [-15, -10, 3.6]].map(([cx, cy, r]) => `<ellipse cx="${cx}" cy="${cy}" rx="${r}" ry="${r * .75}"/>`).join('')}</g>
+      <g transform="translate(-30 9) rotate(-8)"><path d="M0 0q14 2 30 0q-1 3 -3 3.4q-12 1.4 -24 0q-2 -1 -3 -3.4z" fill="url(#kHull)"/><path d="M30 0q3 -4 2 -9" stroke="#4A2E1A" stroke-width="1.4" fill="none"/><path d="M31 -8l-3 -2M31 -8l-2 2" stroke="#E8417E" stroke-width="1.3"/><path d="M8 -1v-5h12v5" fill="none" stroke="#3A2414" stroke-width=".8"/><path d="M7 -6q7 -2 14 0z" fill="#C9B38A"/></g>
+      <g transform="translate(-24 14) rotate(4)"><path d="M0 0q14 2 30 0q-1 3 -3 3.4q-12 1.4 -24 0q-2 -1 -3 -3.4z" fill="url(#kHull)"/><path d="M30 0q3 -4 2 -9" stroke="#4A2E1A" stroke-width="1.4" fill="none"/><path d="M31 -8l-3 -2M31 -8l-2 2" stroke="#F2C46D" stroke-width="1.3"/><path d="M7 -6q7 -2 14 0z" fill="#3E8C5A"/></g>
+    </g>
+    
+    <text id="sunNour" y="52" text-anchor="middle" style="font-size:10.5px;font-weight:700;letter-spacing:.06em;fill:var(--gold)">✦ ${nourDay()}</text>
+    <ellipse data-sun cx="4" cy="0" rx="48" ry="40" fill="transparent" role="button" tabindex="0" aria-label="Ouvrir le Flux" style="cursor:pointer"/>
     ${vil}
   </svg></div>
   <div class="glasswrap">${typeof tjCard === 'function' ? tjCard() + tjFeedback() : ''}</div>
@@ -4865,7 +5106,7 @@ function startIle() {
 /* =====================================================================
    15. RENDU & NAVIGATION
    ===================================================================== */
-const TABS = ['orbite', 'flux', 'foi', 'business', 'corps', 'argent', 'projets', 'apprendre', 'routine', 'reset', 'parcours'];
+const TABS = ['orbite', 'flux', 'foi', 'business', 'corps', 'argent', 'projets', 'apprendre', 'code', 'routine', 'reset', 'parcours'];
 const CVIEWS = ['entrainement', 'nutrition', 'soin'];
 let tab = 'orbite', missedDismissed = false;
 function render(animate) {
@@ -4877,13 +5118,14 @@ function render(animate) {
   checkUnlocks();
   document.documentElement.classList.toggle('flux-on', tab === 'flux');
   if (tab !== 'flux' && FXS.io) { FXS.io.disconnect(); FXS.io = null; }
-  app.innerHTML = { orbite: vIle, projets: vProjM, apprendre: vApprM, reset: vResetM, flux: vFlux, parcours: vParcours, foi: () => F.view === 'arabe' ? vArabe() : F.view === 'dhikr' ? vDhikr() : F.view === 'coeur' ? vHeart() : vHabits(), corps: () => C.view === 'nutrition' ? vNutrition() : C.view === 'soin' ? vSoin() : vTraining(), routine: vRoutineM, argent: () => A.view === 'heures' ? vHeures() : A.view === 'zakat' ? (zkTick(), vZakat()) : vBudget(), business: vBizM, z: () => window.__z ? window.__z.view() : vOrbite() }[tab]();
+  app.innerHTML = { orbite: vIle, projets: vProjM, apprendre: vApprM, code: vCodeM, reset: vResetM, flux: vFlux, parcours: vParcours, foi: () => F.view === 'arabe' ? vArabe() : F.view === 'dhikr' ? vDhikr() : F.view === 'coeur' ? vHeart() : vHabits(), corps: () => C.view === 'nutrition' ? vNutrition() : C.view === 'soin' ? vSoin() : vTraining(), routine: vRoutineM, argent: () => A.view === 'heures' ? vHeures() : A.view === 'zakat' ? (zkTick(), vZakat()) : vBudget(), business: vBizM, z: () => window.__z ? window.__z.view() : vOrbite() }[tab]();
   coreGlyph();
   /* Le décor de l'île derrière chaque module (sauf le Flux et l'espace privé, qui ont leur propre fond) */
   const deco = tab !== 'flux' && tab !== 'z';
-  if (deco && tab !== 'orbite') app.insertAdjacentHTML('afterbegin', ileBg());
   document.body.classList.toggle('ile-on', deco);
   document.body.classList.toggle('ile-soft', deco && tab !== 'orbite');
+  if (deco) ensureThai();
+  updateDock();
   if (tab === 'orbite') startIle();
   checkIle();
   if ((tab === 'orbite' || tab === 'foi') && !missedDismissed) setTimeout(missedOverlay, 700);
@@ -4911,6 +5153,20 @@ function go(t) {
   if (document.startViewTransition && !reduceMotion()) document.startViewTransition(swap); else swap();
 }
 
+
+/* ---------- Navigation de Mosa : barre en verre et tiroir « Plus » ---------- */
+const DOCK = [['orbite', 'Île', 'ile'], ['foi', 'Foi', 'foi'], ['business', 'Business', 'business'], ['corps', 'Corps', 'corps']];
+const MORE = [['argent', 'Argent'], ['projets', 'Projets'], ['apprendre', 'Apprendre'], ['code', 'Code moto'], ['routine', 'Routine'], ['reset', 'Reset'], ['flux', 'Flux']];
+function updateDock() {
+  const d = $('#dock'); if (!d) return;
+  const isMore = MORE.some(m => m[0] === tab);
+  d.innerHTML = DOCK.map(([k, n, g]) => `<button data-goto="${k}" class="${tab === k ? 'on' : ''}" aria-label="${n}"${tab === k ? ' aria-current="page"' : ''}><svg viewBox="0 0 24 24">${GLYPH[g] || ''}</svg><span>${n}</span></button>`).join('') + `<button data-more class="${isMore ? 'on' : ''}" aria-label="Plus de modules" aria-expanded="${!!$('#more.open')}"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/><circle cx="19" cy="12" r="1.8" fill="currentColor"/></svg><span>Plus</span></button>`;
+  const m = $('#more'); if (m) m.innerHTML = `<p class="eyebrow" style="margin:0 0 12px">Tes modules</p><div class="moregrid">${MORE.map(([k, n]) => `<button data-goto="${k}" class="${tab === k ? 'on' : ''}"><i><svg viewBox="0 0 24 24">${GLYPH[k] || ''}</svg></i><span>${n}</span></button>`).join('')}</div>`;
+}
+document.addEventListener('click', e => {
+  if (e.target.closest('[data-more]')) { const m = $('#more'); m.classList.toggle('open'); updateDock(); haptic(); return; }
+  if (e.target.closest('#more [data-goto]') || (!e.target.closest('#more') && $('#more.open'))) { const m = $('#more'); if (m) m.classList.remove('open'); }
+}, true);
 /* ----- Navigation : le noyau et sa roue -----
    Toucher le noyau : la roue s'ouvre, on touche un module.
    Appuyer et glisser : on vise un module et on relâche pour y aller.
@@ -4994,6 +5250,7 @@ document.addEventListener('click', e => {
   if (alifClick(t)) return;
   if (bizClick(t)) return;
   if (projClick(t)) return;
+  if (codeClick(t)) return;
   if (apprClick(t)) return;
   if (rtClick(t)) return;
   if (themeClick(t)) return;
